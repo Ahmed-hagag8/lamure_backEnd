@@ -26,6 +26,8 @@ Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::post('/products', [ProductController::class, 'store']);
 Route::put('/products/{id}', [ProductController::class, 'update']);
 Route::delete('/products/{id}', [ProductController::class, 'destroy']);
+Route::get('/products/{id}/reviews', [\App\Http\Controllers\Api\ReviewController::class, 'index']);
+Route::post('/products/{id}/reviews', [\App\Http\Controllers\Api\ReviewController::class, 'store']);
 
 Route::get('/categories', [CategoryController::class, 'index']);
 
@@ -35,7 +37,10 @@ Route::patch('/orders/{id}', [OrderController::class, 'updateStatus']);
 
 Route::get('/users', [UserController::class, 'index']);
 Route::patch('/users/{id}', [UserController::class, 'update']);
-Route::delete('/users/{id}', [UserController::class, 'destroy']);
+Route::get('/users/{id}/addresses', [\App\Http\Controllers\Api\AddressController::class, 'index']);
+Route::post('/users/{id}/addresses', [\App\Http\Controllers\Api\AddressController::class, 'store']);
+Route::put('/addresses/{id}', [\App\Http\Controllers\Api\AddressController::class, 'update']);
+Route::delete('/addresses/{id}', [\App\Http\Controllers\Api\AddressController::class, 'destroy']);
 
 Route::get('/admin/stats', [AdminController::class, 'stats']);
 Route::get('/admin/sales-chart', [AdminController::class, 'salesChart']);
